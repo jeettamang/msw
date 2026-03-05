@@ -37,7 +37,7 @@ const Courses = () => {
 
               <h2 className="text-lg font-semibold mt-2">{course.title}</h2>
 
-              <p className="text-sm mt-1">{course.description}</p>
+              <p className="text-sm mt-1">{course.description.substring(0, 80)}...</p>
 
               <p className="mt-2 font-bold">Rs. {course.price}</p>
 

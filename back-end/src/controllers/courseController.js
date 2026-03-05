@@ -56,4 +56,22 @@ const getCourses = async (req, res) => {
     });
   }
 };
-export { createCourse, getCourses };
+
+const getCourseById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const course = await CourseModel.findById(id).populate("Instruction");
+    if (!course) {
+      return res.status(404).json({ message: "Course not found" });
+    }
+    res
+      .status(200)
+      .json({ message: "Course fetched successfully", courseDetail: course });
+  } catch (error) {
+    res.status(500).json({
+      message: "Error fetching course",
+      error: error.message,
+    });
+  }
+};
+export { createCourse, getCourses, getCourseById };
