@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { baseUrl } from "../config/ApiRoutes";
 
 const Courses = () => {
+  const navigate = useNavigate();
   const [courses, setCourses] = useState([]);
 
   const fetchedCourses = async () => {
@@ -37,11 +39,18 @@ const Courses = () => {
 
               <h2 className="text-lg font-semibold mt-2">{course.title}</h2>
 
-              <p className="text-sm mt-1">{course.description.substring(0, 80)}...</p>
+              <p className="text-sm mt-1">
+                {course.description.substring(0, 80)}...
+              </p>
 
               <p className="mt-2 font-bold">Rs. {course.price}</p>
 
-              <button className="mt-2 bg-blue-500 hover:bg-blue-700 text-white px-4 rounded-md py-1">
+              <button
+                onClick={() => {
+                  navigate(`/course-details/${course._id}`);
+                }}
+                className="mt-2 bg-blue-500 hover:bg-blue-700 text-white px-4 rounded-md py-1"
+              >
                 View
               </button>
             </div>

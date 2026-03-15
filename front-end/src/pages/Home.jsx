@@ -1,6 +1,7 @@
 import React from "react";
 import Courses from "./courses";
 import { useNavigate } from "react-router-dom";
+import Service from "../components/heroSection/Service";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -59,21 +60,7 @@ export default function Home() {
       <section className="py-16 px-6">
         <h2 className="text-3xl font-bold text-center mb-12">Our Services</h2>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {["IT Training", "Certification Prep", "Corporate Workshops"].map(
-            (item, i) => (
-              <div
-                key={i}
-                className="border rounded-xl p-8 shadow hover:shadow-lg transition"
-              >
-                <h3 className="text-xl font-semibold mb-2">{item}</h3>
-                <p className="text-gray-600">
-                  High-quality learning with industry experts and real projects.
-                </p>
-              </div>
-            ),
-          )}
-        </div>
+        <Service />
       </section>
 
       {/* STATS / METRICS */}
